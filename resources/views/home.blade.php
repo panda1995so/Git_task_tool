@@ -7,7 +7,7 @@
   </head>
   <body>
     <section>
-      <div class="main-manu">
+      <div class="main-menu">
         <nav>
           <ul>
             <li>ホーム</li>
