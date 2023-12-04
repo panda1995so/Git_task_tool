@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\progress;
+use App\Models\Projects;
 
 class Managed extends Controller
 {
@@ -17,8 +18,10 @@ class Managed extends Controller
      */
     public function index()
     {
+      $Projects = Projects::all();
       // compactで変数を渡す
-      return view('managed.managed');
+      return view('managed.managed',compact('Projects'));
+
     }
 
     /**
@@ -39,18 +42,34 @@ class Managed extends Controller
      */
     public function store(Request $request)
     {
-        if($request->has('progress_register')){
-          $rules = [
-                    'progress' => 'required'
-                  ];
-          $messages = ['required' => '空白は登録出来ません'];
-          Validator::make($request->all(),$rules,$messages)->validate();
-          $Progress = new progress;
-          $Progress->progress_Str = $request->input('progress');
-          $Progress->progress_Num = Str::random(5);
-          $Progress->save();
-          $completed_msg = '選択肢の追加が完了しました';
-        }
+      $ch_value = $request->input('register');
+      if($ch_value === 'progress'){
+        $rules = [
+                  'progress' => 'required'
+                ];
+        $messages = ['required' => '空白は登録出来ません'];
+        Validator::make($request->all(),$rules,$messages)->validate();
+        $Progress = new progress;
+        $Progress->progress_Str = $request->input('progress');
+        $Progress->progress_Num = Str::random(5);
+        $Progress->save();
+        $completed_msg = '選択肢の追加が完了しました';
+
+      }elseif($ch_value === 'project'){
+        $rules = [
+                  'project' => 'required'
+                ];
+        $messages = ['required' => '空白は登録出来ません'];
+        Validator::make($request->all(),$rules,$messages)->validate();
+        $Projects = new projects;
+        $Projects->pj_Name = $request->input('project');
+        $Projects->save();
+        $completed_msg = 'プロジェクトの追加が完了しました';
+
+      }else{
+        return redirect('/managed')->with('err_msg','登録できる内容はありません');
+      }
+
         return redirect('/managed')->with('completed_msg',$completed_msg);
     }
 
