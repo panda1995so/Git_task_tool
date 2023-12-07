@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use App\Models\progress;
 use App\Models\Projects;
+use App\Models\priorities;
 
 class Managed extends Controller
 {
@@ -63,8 +64,21 @@ class Managed extends Controller
         Validator::make($request->all(),$rules,$messages)->validate();
         $Projects = new projects;
         $Projects->pj_Name = $request->input('project');
+        $Projects->pj_Num = Str::random(5);
         $Projects->save();
         $completed_msg = 'プロジェクトの追加が完了しました';
+
+      }elseif($ch_value === 'priority'){
+        $rules = [
+                  'priority' => 'required'
+                ];
+        $messages = ['required' => '空白は登録出来ません'];
+        Validator::make($request->all(),$rules,$messages)->validate();
+        $Priorities = new priorities;
+        $Priorities->priority_Str = $request->input('priority');
+        $Priorities->priority_Num = Str::random(5);
+        $Priorities->save();
+        $completed_msg = '優先度の追加が完了しました';
 
       }else{
         return redirect('/managed')->with('err_msg','登録できる内容はありません');

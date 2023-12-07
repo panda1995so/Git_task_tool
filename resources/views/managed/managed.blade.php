@@ -21,17 +21,17 @@
             </ul>
             <ul>
               @foreach($Projects as $project)
-              <a href"" value="{{$project->pj_Num}}"><li>{{$project->pj_Name}}</li>
+              <a class="btn_hover" href="{{url('project')}}?pjNum={{$project->pj_Num}}" data-value="{{$project->pj_Num}}"><li>{{$project->pj_Name}}</li></a>
               @endforeach
             </ul>
             <ul>
-              <li>設定</li>
+              <a class="btn_hover" href="{{url('managed')}}"><li>設定</li></a>
               <li>ログアウト</li>
             </ul>
           </nav>
         </div>
       </section>
-      <section class="right_3fr">
+      <section class="right_5fr">
 @if(Session::has('err_msg'))
 <div class="msg_box">
   <p>
@@ -67,8 +67,8 @@
             <p class="text_bold">優先度：選択肢追加</p>
             <form class="form_area" action="managed" method="post">
               @csrf
-              <input type="text" name="progress" placeholder="入力してください">
-              <button class="btn_hover" type="submit" name="data_register" value="登録する">登録する
+              <input type="text" name="priority" placeholder="入力してください">
+              <button class="btn_hover" type="submit" name="register" value="priority">登録する
             </form>
           </div>
         </div>

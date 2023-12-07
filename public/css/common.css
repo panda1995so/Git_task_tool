@@ -3,18 +3,33 @@ li{
   list-style: none;
   margin-top: 10px;
 }
+a{
+  text-decoration: none;
+  color: black;
+}
 main{
   display: grid;
-  grid-template-columns: 1fr 3fr;
+  grid-template-columns: 1fr 5fr;
 }
-.left_1fr,.right_3fr{
+button{
+  padding: 5px;
+}
+.btn_hover{
+  background-color: #A9D0D9;
+  transition:all .4s ease-in-out;
+}
+.btn_hover:hover{
+  background-color: #7FA8B4;
+  color: white;
+}
+.left_1fr,.right_5fr{
   padding: 10px;
 }
 .left_1fr{
   height: 100vh;
   background-color: #FFC2B3;
 }
-.right_3fr{
+.right_5fr{
   margin-top: 50px;
   /* background-color: blue; */
 }
@@ -55,8 +70,93 @@ header{
 .form_area input{
   border: solid 1px;
 }
-.btn_hover{
-  background-color: #A9D0D9;
+/* 右：Projectの場合 */
+.task_area{
+  margin-top: 30px;
+  padding: 0 30px;
+}
+table{
+  width: 100%;
+}
+th,td{
+  padding: 5px;
+  border-bottom: solid 1px #dcdcdc;
+}
+.table_title{
+  margin-bottom: 20px;
+}
+.table_title>th:nth-of-type(1){
+  width: 5%;
+}
+.table_title>th:nth-of-type(2){
+  width: 45%;
+}
+.table_title>th:nth-of-type(3){
+  width: 20%;
+}
+.table_title>th:nth-of-type(4){
+  width: 10%;
+}
+.table_title>th:nth-of-type(5){
+  width: 10%;
+}
+.table_row>td:not(:nth-of-type(2)){
+  text-align: center;
+}
+/* ポップアップウィンドウ */
+.add_task{
+  display: flex;
+  flex-direction: column;
+}
+.add_task input,.add_task select{
+  margin-top: 20px;
+  border-bottom: solid 1px #dcdcdc;
+  width:300px;
+}
+.add_task button{
+  margin-top: 20px;
+  width: 50%;
+  position: absolute;
+  bottom: 10px;
+  right: 135px
+}
+.open {
+	cursor:pointer;
+}
+#pop-up {
+	display: none;
+}
+.overlay {
+	display: none;
+}
+#pop-up:checked + .overlay {
+	display: block;
+	position: fixed;
+	width: 100%;
+	height: 100vh;
+	top: 0;
+	left: 0;
+	z-index: 9999;
+	background: rgba(0, 0, 0, 0.6);
+}
+.popup_form {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 90vw;
+	max-width: 540px;
+  padding: 20px;
+	height: 350px;
+	background-color: #fff;
+	border-radius: 4px;
+	align-items: center;
+	transform: translate(-50%, -50%);
+}
+.close {
+	position: absolute;
+	top: 10px;
+	right: 15px;
+	cursor:pointer;
 }
 /* カラーチェック */
 .color_check1{
