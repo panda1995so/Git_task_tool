@@ -1,4 +1,9 @@
 /* 全体共通設定 */
+h1{
+  width: 100%;
+  position: absolute;
+  top: 1px;
+}
 li{
   list-style: none;
   margin-top: 10px;
@@ -16,7 +21,7 @@ button{
 }
 .btn_hover{
   background-color: #A9D0D9;
-  transition:all .4s ease-in-out;
+  transition:all .2s ease-in-out;
 }
 .btn_hover:hover{
   background-color: #7FA8B4;
@@ -71,6 +76,9 @@ header{
   border: solid 1px;
 }
 /* 右：Projectの場合 */
+.pjmenu_area{
+  display: flex;
+}
 .task_area{
   margin-top: 30px;
   padding: 0 30px;
@@ -79,8 +87,11 @@ table{
   width: 100%;
 }
 th,td{
-  padding: 5px;
+  padding: 10px 5px;
   border-bottom: solid 1px #dcdcdc;
+}
+td:last-child{
+  border-bottom: none;
 }
 .table_title{
   margin-bottom: 20px;
@@ -121,7 +132,12 @@ th,td{
   right: 135px
 }
 .open {
-	cursor:pointer;
+  margin-left: 20px;
+  cursor: pointer;
+  padding: 10px 15px;
+}
+td>.open{
+  margin-left: 0;
 }
 #pop-up {
 	display: none;

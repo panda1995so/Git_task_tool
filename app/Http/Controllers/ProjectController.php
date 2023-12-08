@@ -29,11 +29,11 @@ class ProjectController extends Controller
         ->first();
 
       $Tasks = DB::table('Tasks')
+        ->leftJoin('priorities','Tasks.priority', '=', 'priorities.priority_Num')
+        ->leftJoin('progress','Tasks.progress', '=', 'progress.progress_Num')
         ->select('Tasks.id','Tasks.pjtable_Num','Tasks.task_Name','Tasks.About',
-                  'Tasks.main_Mg','Tasks.limitDate','priorities.priority_Num','priorities.priority_Str',
-                  'progress.progress_Num','progress.progress_Str')
-        ->join('priorities','Tasks.priority', '=', 'priorities.priority_Num')
-        ->join('progress','Tasks.progress', '=', 'progress.progress_Num')
+                  'Tasks.main_Mg','Tasks.limitDate','Tasks.priority','priorities.priority_Str',
+                  'Tasks.progress','progress.progress_Str')
         ->where('Tasks.pjtable_Num', '=', $url_param)
         ->orderBy('Tasks.id')
         ->get();
@@ -77,7 +77,7 @@ class ProjectController extends Controller
             'progress'    => 'nullable',
         ];
         $messages = [
-          'task_Name.required' => '登録日時が選択されていません',
+          'task_Name.required' => 'タスク名が選択されていません',
         ];
         Validator::make($request->all(), $rules, $messages)->validate();
         $Tasks = new Tasks;
