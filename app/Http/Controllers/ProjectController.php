@@ -92,8 +92,8 @@ class ProjectController extends Controller
         $completed_msg = 'タスクの登録が完了しました';
 
         $url = url()->current();
-        $ulrwithparams = $url . '?pjNum=' . $url_param;
-        return redirect()->to($ulrwithparams)->with('completed_msg',$completed_msg);
+        $urlwithparams = $url . '?pjNum=' . $url_param;
+        return redirect()->to($urlwithparams)->with('completed_msg',$completed_msg);
       }
 
     }

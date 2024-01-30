@@ -1,69 +1,40 @@
-<!DOCTYPE html>
-<html lang="ja">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="cache-control" content="no-cache, no-store">
-    <title>{{$Projects_Name->pj_Name}}/タスク管理＜Panda＞</title>
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="../public/css/common.css">
-  </head>
-  <body>
-    <header>
-      <h1>test</h1>
-    </header>
+@extends('layouts.default')
+@section('title')
+  {{$Projects_Name->pj_Name}}
+@endsection('title')
+@section('other')
+<script type="text/javascript">
+function window_Fadein(taskid){
+  var openWindow = document.getElementById('taskWindow' + taskid);
+console.log(openWindow);
+  if (openWindow.classList.contains('opened')){
+    // 何もしない
+  }else {
+    var closeWindow = document.getElementsByClassName('opened');
+    if(closeWindow.length> 0){
+      closeWindow[0].classList.remove('opened');
+    };
+  };
+  openWindow.classList.toggle('opened');
+};
+</script>
+@endsection('other')
+@section('content')
     <main>
-      <section class="left_1fr">
-        <div class="main-menu">
-          <nav>
-            <ul>
-              <li>ホーム</li>
-              <li>マイタスク</li>
-            </ul>
-            <ul>
-              @foreach($Projects as $project)
-              <a class="btn_hover" href="{{url('project')}}?pjNum={{$project->pj_Num}}" data-value="{{$project->pj_Num}}"><li>{{$project->pj_Name}}</li></a>
-              @endforeach
-            </ul>
-            <ul>
-              <a class="btn_hover" href="{{url('managed')}}"><li>設定</li></a>
-              <li>ログアウト</li>
-            </ul>
-          </nav>
-        </div>
-      </section>
+@include('parts.left_menu')
       <section class="right_5fr">
         <div class="pjmenu_area">
           <h2>{{$Projects_Name->pj_Name}}</h2>
-          <label class="open btn_hover" for="pop-up">＋</label>
-          <input type="checkbox" id="pop-up">
-          <div class="overlay">
-            <div class="popup_form">
-              <label class="close" for="pop-up">閉じる</label>
-              <form class="add_task" action="project" method="post">
-                @csrf
-                <input type="hidden" name="pjtable_Num" value="{{$Projects_Name->pj_Num}}">
-                <label>タスク名：<input type="text" name="task_Name" placeholder="必須"></label>
-                <label>内容：<input type="text" name="About" placeholder="任意"></label>
-                <label>期日：<input type="date" name="limitDate" placeholder="任意"></label>
-                <label>担当：<input type="number" name="main_Mg" placeholder="任意"></label>
-                <label>優先度：<select class="" name="priority">
-                  <option hidden>選択してください</option>
-                  @foreach($Priorities as $priority)
-                    <option value={{$priority->priority_Num}}>{{$priority->priority_Str}}</option>
-                  @endforeach
-                </select></label>
-                <label>進捗：<select class="" name="progress">
-                  <option hidden>選択してください</option>
-                  @foreach($Progress as $progress)
-                    <option value={{$progress->progress_Num}}>{{$progress->progress_Str}}</option>
-                  @endforeach
-                </select></label>
-                <button class="btn_hover" type="submit" name="task_register" value="task_register">登録する
-              </form>
-            </div>
-          </div>
+@include('parts.add_task_form')
         </div>
         <div class="task_area">
+@if(Session::has('completed_msg'))
+    <div class="msg_box_2">
+      <p>
+        {{session('completed_msg')}}
+      </p>
+    </div>
+@endif
           <h3>セクション名</h3>
           <table>
             <tr class="table_title">
@@ -74,7 +45,7 @@
               <th>担当</th>
             </tr>
             @foreach($Tasks as $task)
-            <tr class="table_row">
+            <tr class="table_row" onclick="window_Fadein({{$task->id}})">
               <td>{{$task->id}}</td>
               <td>{{$task->task_Name}}</td>
               <td>{{$task->limitDate}}</td>
@@ -82,41 +53,32 @@
               <td>大栁</td>
             </tr>
             @endforeach
-            <tr class="table_row">
-              <td>
-                <label class="open btn_hover" for="pop-up">＋</label>
-                <input type="checkbox" id="pop-up">
-                <div class="overlay">
-                  <div class="popup_form">
-                    <label class="close" for="pop-up">閉じる</label>
-                    <form class="add_task" action="project" method="post">
-                      @csrf
-                      <input type="hidden" name="pjtable_Num" value="{{$Projects_Name->pj_Num}}">
-                      <label>タスク名：<input type="text" name="task_Name" placeholder="必須"></label>
-                      <label>内容：<input type="text" name="About" placeholder="任意"></label>
-                      <label>期日：<input type="date" name="limitDate" placeholder="任意"></label>
-                      <label>担当：<input type="number" name="main_Mg" placeholder="任意"></label>
-                      <label>優先度：<select class="" name="priority">
-                        <option hidden value="">選択してください</option>
-                        @foreach($Priorities as $priority)
-                          <option value={{$priority->priority_Num}}>{{$priority->priority_Str}}</option>
-                        @endforeach
-                      </select></label>
-                      <label>進捗：<select class="" name="progress">
-                        <option hidden value="">選択してください</option>
-                        @foreach($Progress as $progress)
-                          <option value={{$progress->progress_Num}}>{{$progress->progress_Str}}</option>
-                        @endforeach
-                      </select></label>
-                      <button class="btn_hover" type="submit" name="task_register" value="task_register">登録する
-                    </form>
-                  </div>
-                </div>
-              </td>
-            </tr>
           </table>
+          @foreach($Tasks as $task)
+          <div id="taskWindow{{$task->id}}" class="taskWindow_area">
+            <h4>{{$task->task_Name}}</h4>
+            <table>
+              <tr>
+                <th>期日：</th>
+                <td>{{$task->limitDate}}</td>
+              </tr>
+              <tr>
+                <th>担当：</th>
+                <td>{{$task->main_Mg}}</td>
+              </tr>
+              <tr>
+                <th>優先度：</th>
+                <td>{{$task->priority_Str}}</td>
+              </tr>
+            </table>
+            <div class="priority_Str_area">
+              <p>{{$task->About}}</p>
+            </div>
+          </div>
+          @endforeach
+@include('parts.add_task_form')
         </div>
+        <!-- Task section End -->
       </section>
     </main>
-  </body>
-</html>
+@endsection('content')
