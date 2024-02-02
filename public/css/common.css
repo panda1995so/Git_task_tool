@@ -36,7 +36,6 @@ button{
 }
 .right_5fr{
   margin-top: 50px;
-  /* background-color: blue; */
 }
 /* ヘッダー */
 header{
@@ -101,7 +100,7 @@ th,td{
   width: 5%;
 }
 .table_title>th:nth-of-type(2){
-  width: 45%;
+  width: 30%;
 }
 .table_title>th:nth-of-type(3){
   width: 20%;
@@ -121,14 +120,43 @@ th,td{
 .opened{
   display: inline-block;
   z-index: 999;
-  background-color: #FFC2B3;
+  background-color: #FFFFFF;
   position: fixed;
   right: 0;
   top: 50px;
   height: 100vh;
   width: 400px;
+  animation-name: fadeIn;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
+}
+/* タスクウィンドウ */
+.taskWindow_area{
+  max-width: 400px;
+  padding: 15px;
+  border: 5px solid #FFC2B3;
+}
+.taskWindow_area h4{
+  margin-bottom: 15px;
+  text-align: center;
+}
+.taskWindow_area th, .taskWindow_area td{
+  border-bottom: none;
 }
 /* ポップアップウィンドウ */
+.section_addbtn{
+  margin-top: 20px;
+}
 .add_task{
   display: flex;
   flex-direction: column;

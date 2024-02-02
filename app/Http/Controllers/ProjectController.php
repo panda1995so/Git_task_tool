@@ -69,6 +69,8 @@ class ProjectController extends Controller
         }
         $rules = [
             'pjtable_Num' => 'required',
+            'section_Num' => 'nullable',
+            'task_Num'    => 'nullable',
             'task_Name'   => 'required',
             'About'       => 'nullable',
             'limitDate'   => 'nullable',
@@ -90,7 +92,6 @@ class ProjectController extends Controller
         $Tasks->progress    = $request->input('progress') ?? '';
         $Tasks->save();
         $completed_msg = 'タスクの登録が完了しました';
-
         $url = url()->current();
         $urlwithparams = $url . '?pjNum=' . $url_param;
         return redirect()->to($urlwithparams)->with('completed_msg',$completed_msg);

@@ -12,6 +12,7 @@
       </ul>
       <ul>
         <a class="btn_hover" href="{{url('managed')}}"><li>設定</li></a>
+        <a class="btn_hover" href="{{url('/nazotoki')}}"><li>なぞときパズル</li></a>
         <li>ログアウト</li>
       </ul>
     </nav>

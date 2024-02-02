@@ -35,6 +35,7 @@ console.log(openWindow);
       </p>
     </div>
 @endif
+<!-- Task section Start -->
           <h3>セクション名</h3>
           <table>
             <tr class="table_title">
@@ -76,9 +77,11 @@ console.log(openWindow);
             </div>
           </div>
           @endforeach
+          <div class="section_addbtn">
 @include('parts.add_task_form')
+          </div>
         </div>
-        <!-- Task section End -->
+<!-- Task section End -->
       </section>
     </main>
 @endsection('content')
