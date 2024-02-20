@@ -4,6 +4,10 @@ use Illuminate\Support\Facades\Route;
 Route::resource('managed', 'App\Http\Controllers\Managed');
 Route::resource('project', 'App\Http\Controllers\ProjectController');
 Route::get('nazotoki', 'App\Http\Controllers\nazotokitest@index');
+Route::get('rally_suudoku', 'App\Http\Controllers\nazotokitest@index');
+Route::get('rally_crosswords', 'App\Http\Controllers\nazotokitest@index');
+Route::get('rally_slitherlink', 'App\Http\Controllers\nazotokitest@index');
+Route::get('rally_seekwords', 'App\Http\Controllers\nazotokitest@index');
 /*
 |--------------------------------------------------------------------------
 | Web Routes

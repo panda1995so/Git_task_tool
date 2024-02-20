@@ -33,6 +33,8 @@ button{
 .left_1fr{
   height: 100vh;
   background-color: #FFC2B3;
+  position: sticky;
+  top: 0;
 }
 .right_5fr{
   margin-top: 50px;
