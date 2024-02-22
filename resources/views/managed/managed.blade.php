@@ -1,36 +1,10 @@
-<!DOCTYPE html>
-<html lang="ja" >
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="cache-control" content="no-cache, no-store">
-    <title>ホーム/タスク管理＜Panda＞</title>
-    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
-    <link rel="stylesheet" href="../public/css/common.css">
-  </head>
-  <body>
-    <header>
-      <h1>test</h1>
-    </header>
+@extends('layouts.default')
+@section('title')
+  設定
+@endsection('title')
+@section('content')
     <main>
-      <section class="left_1fr">
-        <div class="main-menu">
-          <nav>
-            <ul>
-              <li>ホーム</li>
-              <li>マイタスク</li>
-            </ul>
-            <ul>
-              @foreach($Projects as $project)
-              <a class="btn_hover" href="{{url('project')}}?pjNum={{$project->pj_Num}}" data-value="{{$project->pj_Num}}"><li>{{$project->pj_Name}}</li></a>
-              @endforeach
-            </ul>
-            <ul>
-              <a class="btn_hover" href="{{url('managed')}}"><li>設定</li></a>
-              <li>ログアウト</li>
-            </ul>
-          </nav>
-        </div>
-      </section>
+@include('parts.left_menu')
       <section class="right_5fr">
 @if(Session::has('err_msg'))
 <div class="msg_box">
@@ -86,5 +60,4 @@
         </div>
       </section>
     </main>
-  </body>
-</html>
+@endsection('content')

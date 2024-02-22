@@ -1,38 +1,30 @@
-<!DOCTYPE html>
-<html lang="ja" >
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="cache-control" content="no-cache, no-store">
-    <title>ホーム/タスク管理＜Panda＞</title>
-  </head>
-  <body>
-    <section>
-      <div class="main-menu">
-        <nav>
-          <ul>
-            <li>ホーム</li>
-            <li>マイタスク</li>
-          </ul>
-          <ul>
-            <li>プロジェクトボード１</li>
-            <li>プロジェクトボード２</li>
-          </ul>
-          <ul>
-            <li>設定</li>
-            <li>ログアウト</li>
-          </ul>
-        </nav>
-      </div>
-    </section>
-    <section>
-      <div class="header">
+@extends('layouts.app')
+@section('title')
+  ログイン
+@endsection('title')
+@section('content')
+<main>
+<!-- 左メニュー入れる -->
+  <section class="right_5fr">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">{{ __('Dashboard') }}</div>
 
-      </div>
-    </section>
-    <main>
-      <section>
+                    <div class="card-body">
+                        @if (session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @endif
 
-      </section>
-    </main>
-  </body>
-</html>
+                        {{ __('You are logged in!') }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </section>
+</main>
+@endsection

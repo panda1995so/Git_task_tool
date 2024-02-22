@@ -1,0 +1,13 @@
+/* ログイン画面  ベース*/
+.display_area{
+  display: flex;
+  justify-content: center;
+}
+.login_area{
+  margin-top: 100px;
+}
+input{
+  border-bottom: solid 1px;
+  background-color: #F2E9E4;
+}
+/* ログイン */
