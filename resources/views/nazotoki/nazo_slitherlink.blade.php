@@ -16,6 +16,7 @@
 @include('parts.1_nazotoki.nazo-button')
         <div class="input_area">
           <form class="" action="#" method="post">
+            @csrf
             <div class="product_area">
               <div class="product_name">
                 <h3>なぞときスリザーリンクパズルラリー　基本セット</h3>

@@ -20,13 +20,17 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
-
+    // protected function loggedOut(\Illuminate\Http\Request $request)
+    // {
+    //     return redirect('/home');
+    // }
     /**
      * Where to redirect users after login.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    // protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = ('/managed');
 
     /**
      * Create a new controller instance.

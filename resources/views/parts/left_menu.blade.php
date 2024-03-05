@@ -13,7 +13,14 @@
       <ul>
         <a class="btn_hover" href="{{url('managed')}}"><li>設定</li></a>
         <a class="btn_hover" href="{{url('/nazotoki')}}"><li>なぞときパズル</li></a>
-        <li>ログアウト</li>
+        <a class="btn_hover" href="{{ route('logout') }}"
+           onclick="event.preventDefault();
+                         document.getElementById('logout-form').submit();">
+            <li>ログアウト</li>
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
       </ul>
     </nav>
   </div>

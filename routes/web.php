@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-Route::resource('managed', 'App\Http\Controllers\Managed');
-Route::resource('project', 'App\Http\Controllers\ProjectController');
+Route::resource('managed', 'App\Http\Controllers\Managed')->middleware('auth');;
+Route::resource('project', 'App\Http\Controllers\ProjectController')->middleware('auth');;
 Route::get('nazotoki', 'App\Http\Controllers\nazotokitest@index');
 Route::get('rally_suudoku', 'App\Http\Controllers\nazotokitest@index');
 Route::get('rally_crosswords', 'App\Http\Controllers\nazotokitest@index');

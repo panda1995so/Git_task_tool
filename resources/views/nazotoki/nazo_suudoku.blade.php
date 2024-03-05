@@ -16,6 +16,7 @@
 @include('parts.1_nazotoki.nazo-button')
         <div class="input_area">
           <form class="" action="#" method="post">
+            @csrf
             <div class="product_area">
               <div class="product_name">
                 <h3>なぞとき数独パズルラリー　基本セット</h3>
@@ -40,6 +41,7 @@
               </div>
             </div>
 @include('parts.1_nazotoki.nazo-options')
+            <button type="submit" name="make_Quotation">内容を確認する</button>
           </form>
         </div>
         <div class="price_area">

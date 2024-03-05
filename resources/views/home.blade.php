@@ -3,28 +3,23 @@
   ログイン
 @endsection('title')
 @section('content')
-<main>
-<!-- 左メニュー入れる -->
-  <section class="right_5fr">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">{{ __('Dashboard') }}</div>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('メニュー') }}</div>
 
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 
-                        {{ __('You are logged in!') }}
-                    </div>
+                    {{ __('ログインするか、アカウントを登録してください(・ω・)ノ') }}
                 </div>
             </div>
         </div>
     </div>
-  </section>
-</main>
+</div>
 @endsection
