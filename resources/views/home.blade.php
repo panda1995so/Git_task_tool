@@ -16,6 +16,11 @@
                         </div>
                     @endif
 
+                    <ul>
+                      <li><a href="{{url('/nazotoki')}}">動画サンプル</li>
+                      <li><a href="{{url('/rally_suudoku')}}">注文サンプル</li>
+                    </ul>
+
                     {{ __('ログインするか、アカウントを登録してください(・ω・)ノ') }}
                 </div>
             </div>

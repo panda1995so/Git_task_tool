@@ -13,7 +13,7 @@ class nazotokitest extends Controller
     $Projects = Projects::all();
     $url = url() -> current();
     if(preg_match("/nazotoki/",$url)){
-      return view('nazotoki.nazotokitest',compact('Projects'));
+      return view('nazotoki.nazotoki_movie',compact('Projects'));
     }elseif(preg_match("/rally_suudoku/",$url)){
       return view('nazotoki.nazo_suudoku',compact('Projects'));
     }elseif(preg_match("/rally_crosswords/",$url)){

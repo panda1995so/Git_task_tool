@@ -92,3 +92,12 @@ tr{
     transition: 0.5s ease-in-out;
   }
 }
+/* サンプル動画 */
+.movie_col_3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 30px;
+}
+.item {
+    width: 100%;
+}

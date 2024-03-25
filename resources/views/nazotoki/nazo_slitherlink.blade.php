@@ -4,7 +4,7 @@
 @endsection('title')
 @section('other')
 <link rel="stylesheet" href="{{asset("/css/nazotokitest.css")}}">
-<script type="text/javascript" src="{{asset("/javascript/nazotoki_use.js")}}"></script>
+<script type="text/javascript" src="{{asset("/js/nazotoki_use.js")}}"></script>
 @endsection('other')
 @section('content')
     <main>
