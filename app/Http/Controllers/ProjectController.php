@@ -24,18 +24,17 @@ class ProjectController extends Controller
       $Priorities = priorities::all();
       $url_param = $request->query('pjNum');
       $Projects = Projects::all();
-      $Projects_Name = DB::table('Projects')
-        ->where('Projects.pj_Num', '=' , $url_param)
+      $Projects_Name = DB::table('projects')
+        ->where('projects.pj_Num', '=' , $url_param)
         ->first();
-
-      $Tasks = DB::table('Tasks')
-        ->leftJoin('priorities','Tasks.priority', '=', 'priorities.priority_Num')
-        ->leftJoin('progress','Tasks.progress', '=', 'progress.progress_Num')
-        ->select('Tasks.id','Tasks.pjtable_Num','Tasks.task_Name','Tasks.About',
-                  'Tasks.main_Mg','Tasks.limitDate','Tasks.priority','priorities.priority_Str',
-                  'Tasks.progress','progress.progress_Str')
-        ->where('Tasks.pjtable_Num', '=', $url_param)
-        ->orderBy('Tasks.id')
+      $Tasks = DB::table('tasks')
+        ->leftJoin('priorities','tasks.priority', '=', 'priorities.priority_Num')
+        ->leftJoin('progress','tasks.progress', '=', 'progress.progress_Num')
+        ->select('tasks.id','tasks.pjtable_Num','tasks.task_Name','tasks.About',
+                  'tasks.main_Mg','tasks.limitDate','tasks.priority','priorities.priority_Str',
+                  'tasks.progress','progress.progress_Str')
+        ->where('tasks.pjtable_Num', '=', $url_param)
+        ->orderBy('tasks.id')
         ->get();
 // dd($Tasks);
       return view('project.common',compact('Progress','Priorities','Projects','Projects_Name','Tasks'));
@@ -82,8 +81,9 @@ class ProjectController extends Controller
           'task_Name.required' => 'タスク名が選択されていません',
         ];
         Validator::make($request->all(), $rules, $messages)->validate();
-        $Tasks = new Tasks;
+        $Tasks = new tasks;
         $Tasks->pjtable_Num = $url_param;
+        $Tasks->About       = $request->input('section_Num') ?? '';
         $Tasks->task_Name   = $request->input('task_Name');
         $Tasks->About       = $request->input('About') ?? '';
         $Tasks->limitDate   = $request->input('limitDate') ?? '';

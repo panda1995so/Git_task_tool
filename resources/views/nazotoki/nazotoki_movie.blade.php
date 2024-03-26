@@ -24,7 +24,7 @@
               <video class="item" src="{{asset("/movie/3D　ビジネス.mp4")}}" controls="" autoplay="" playsinline="" muted=""></video>
             </li>
             <li>
-              <video class="item" src="{{asset("/movie/3D　ビジネス.mp4")}}" poster="{{asset("/img/サンプル動画_サムネイル.png")}}" controls="" playsinline="" muted=""></video>
+              <video class="item" src="{{asset("/movie/240326_ときこちゃん_会場紹介.mp4")}}" poster="{{asset("/img/サンプル動画_サムネイル.png")}}" controls="" playsinline="" muted=""></video>
             </li>
           </ul>
         </div>

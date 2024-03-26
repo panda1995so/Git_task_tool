@@ -17,7 +17,7 @@
                     @endif
 
                     <ul>
-                      <li><a href="{{url('/nazotoki')}}">動画サンプル</li>
+                      <li><a href="{{url('/4ZiquE8Z4Aw7')}}">動画サンプル</li>
                       <li><a href="{{url('/rally_suudoku')}}">注文サンプル</li>
                     </ul>
 

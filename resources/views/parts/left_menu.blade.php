@@ -17,7 +17,7 @@
       <ul>
         <a class="btn_hover" href="{{url('managed')}}"><li>設定</li></a>
         <a class="btn_hover" href="{{url('/rally_suudoku/')}}"><li>なぞときパズル</li></a>
-        <a class="btn_hover" href="{{url('/nazotoki')}}"><li>なぞときサンプル動画</li></a>
+        <a class="btn_hover" href="{{url('/4ZiquE8Z4Aw7')}}"><li>なぞときサンプル動画</li></a>
         <a class="btn_hover" href="{{ route('logout') }}"
            onclick="event.preventDefault();
                          document.getElementById('logout-form').submit();">
